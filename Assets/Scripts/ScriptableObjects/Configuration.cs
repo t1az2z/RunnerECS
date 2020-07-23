@@ -9,7 +9,7 @@ namespace RunnerTT
     public class Configuration : ScriptableObject
     {
         public float MovementSpeed;
-        public Vector3 MoveDirection;
+        //[HideInInspector] public Vector3 MoveDirection;
         public int StartLaneIndex;
         public CoinView CoinPrefab;
         public ObstacleView ObstaclePrefab;
@@ -20,6 +20,7 @@ namespace RunnerTT
         public float RandomTimeForSpawn => UnityEngine.Random.Range(ObstacleMinSpawnTime, ObstacleMaxSpawnTime);
         [Range(0, 100)] public int CoinGenerationChance;
         public float CoinSpawnCooldown;
-        public float SpeedIncrementPerCoin;
+        public float MaxSpeedUpCoins;
+        public float PoolingBorderZCoordinate;
     }
 }

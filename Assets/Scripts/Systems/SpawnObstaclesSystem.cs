@@ -8,10 +8,10 @@ namespace RunnerTT
     {
         private Configuration _configuration = null;
         private EcsWorld _world = null;
-        private GameState _gameState;
-        private SceneData _sceneData;
+        private GameState _gameState = null;
+        private SceneData _sceneData = null;
         private EcsFilter<SpawnObstacleEvent, SpawnLaneIndexComponent, TimeSinceObsacleSpawnComponent, TimeTillNextSpawnComponent> _filter = null;
-        private EcsFilter<SpawnCoinEvent, SpawnLaneIndexComponent> _spawnCoins = null;
+
         public void Run()
         {
             if (_gameState.State != State.Game || _filter.IsEmpty())
@@ -23,13 +23,13 @@ namespace RunnerTT
                 var lanePosition = _configuration.LanesPositions[laneindex];
                 Vector3 position = new Vector3(lanePosition.x, lanePosition.y, _configuration.SpawnDistance);
                 var obstacleEntity = _world.NewEntity();
-                ObstacleView obstacleView = Object.Instantiate(_configuration.ObstaclePrefab);
+                ObstacleView obstacleView = _sceneData.ObsaclesPool.Get(_configuration.ObstaclePrefab);
                 obstacleView.transform.position = position;
                 obstacleView.Entity = obstacleEntity;
                 obstacleEntity.Get<WorldObjectComponent>().Transform = obstacleView.transform;
+                obstacleEntity.Get<ObstacleViewRefComponent>().Value = obstacleView;
                 ref var moveComponent = ref obstacleEntity.Get<MoveComponent>();
-                moveComponent.Direction = _configuration.MoveDirection;
-                //TODO add coins speed increment
+                moveComponent.Direction = Vector3.back;
                 moveComponent.Speed = _configuration.MovementSpeed;
                 ref var spawnObstacleEntity = ref _filter.GetEntity(index);
                 ResetSpawnEntity(spawnObstacleEntity);

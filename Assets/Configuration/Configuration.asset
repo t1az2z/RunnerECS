@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Configuration
   m_EditorClassIdentifier: 
   MovementSpeed: 10
-  MoveDirection: {x: 0, y: 0, z: -1}
   StartLaneIndex: 1
   CoinPrefab: {fileID: 9112447560551880096, guid: eac8b475d16ccaa4b968aadae26e095e,
     type: 3}
@@ -24,9 +23,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   SpawnDistance: 120
-  ObstacleMinSpawnTime: 0.8
-  ObstacleMaxSpawnTime: 6
-  CoinGenerationChance: 100
+  ObstacleMinSpawnTime: 1.457
+  ObstacleMaxSpawnTime: 3.69
+  CoinGenerationChance: 1
   CoinSpawnCooldown: 0.2
-  CoinTimeWindow: 0.6
-  SpeedIncrementPerCoin: 0.3
+  MaxSpeedUpCoins: 30
+  PoolingBorderZCoordinate: -8

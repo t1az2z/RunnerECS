@@ -1,7 +1,20 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-public class CoinView : MonoBehaviour
+namespace RunnerTT
 {
-    public EcsEntity Entity;
+    public class CoinView : MonoBehaviour
+    {
+        public EcsEntity Entity;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (Entity.IsNull())
+            {
+                Debug.LogError("Entity is null on coin");
+                return;
+            }
+            Entity.Get<CollisionEventComponent>().Type = CollisionType.Coin;
+        }
+    }
 }

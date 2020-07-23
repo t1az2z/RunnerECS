@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using RunnerTT;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneData : MonoBehaviour
+namespace RunnerTT
 {
-    public Camera Camera;
-    public PlayerView PlayerView;
-
+    public class SceneData : MonoBehaviour
+    {
+        public PlayerView PlayerView;
+        public CoinsPool CoinsPool;
+        public ObstaclesPool ObsaclesPool;
+        public UI UI;
+    }
 }

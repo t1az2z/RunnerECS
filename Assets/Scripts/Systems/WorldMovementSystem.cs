@@ -1,5 +1,4 @@
 ﻿using Leopotam.Ecs;
-using System.Numerics;
 using UnityEngine;
 
 namespace RunnerTT
@@ -18,7 +17,7 @@ namespace RunnerTT
             {
                 var transform = _filter.Get1(index).Transform;
                 var direction = _filter.Get2(index).Direction;
-                var speed = _filter.Get2(index).Speed;
+                var speed = _filter.Get2(index).Speed;// + _configuration.MaxSpeedUpCoins*_gameState.CoinsCount;
                 transform.Translate(direction * speed * Time.deltaTime);
             }
         }

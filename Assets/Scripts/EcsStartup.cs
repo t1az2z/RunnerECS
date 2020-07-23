@@ -13,7 +13,7 @@ namespace RunnerTT {
             
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
-            GameState GameState = new GameState(State.Start, Configuration.MovementSpeed);
+            GameState gameState = new GameState(Configuration.MovementSpeed);
 #if UNITY_EDITOR
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
@@ -21,6 +21,8 @@ namespace RunnerTT {
             _systems
                 // register your systems here, for example:
                 .Add(new PlayerInitializationSystem())
+                .Add(new DistanceCounterInitSystem())
+                .Add(new DistanceCountSystem())
                 .Add(new InputSystem())
                 .Add(new WorldMovementSystem())
                 .Add(new InputProcessingSystem())
@@ -29,20 +31,29 @@ namespace RunnerTT {
                 .Add(new GenerationPlanningSystem())
                 .Add(new SpawnObstaclesSystem())
                 .Add(new SpawnCoinsSystem())
+                .Add(new CollisionProcessingSystem())
+                .Add(new ReturnToPoolBehindBorderSystem())
                 // .Add (new TestSystem2 ())
                 
                 // register one-frame components (order is important), for example:
                 .OneFrame<InputEvet> ()
                 .OneFrame<SpawnObstacleEvent>()
                 .OneFrame<SpawnCoinEvent>()
+                .OneFrame<CollisionEventComponent>()
                 // .OneFrame<TestComponent2> ()
                 
                 // inject service instances here (order doesn't important), for example:
                 .Inject(Configuration)
                 .Inject(SceneData)
-                .Inject(GameState)
+                .Inject(gameState)
                 // .Inject (new NavMeshSupport ())
                 .Init ();
+
+            SceneData.CoinsPool.Prewarm(100, Configuration.CoinPrefab);
+            SceneData.ObsaclesPool.Prewarm(100, Configuration.ObstaclePrefab);
+            GameState.OnGameStateChange += SceneData.UI.OnGameStateChange;
+
+            gameState.State = State.Start;
         }
 
         void Update () {
