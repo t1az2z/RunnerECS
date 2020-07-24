@@ -1,4 +1,5 @@
 ﻿using Leopotam.Ecs;
+using UnityEngine;
 
 namespace RunnerTT
 {
@@ -15,7 +16,7 @@ namespace RunnerTT
                 var entity = _world.NewEntity();
                 entity.Get<SpawnLaneIndexComponent>().Value = currentLaneIndex;
                 entity.Get<TimeSinceObsacleSpawnComponent>().Value = 0;
-                entity.Get<TimeTillNextSpawnComponent>().Value = _configuration.RandomTimeForSpawn;
+                entity.Get<TimeTillNextSpawnComponent>().Value = Random.Range(_configuration.ObstacleMinSpawnTime, _configuration.ObstacleMaxSpawnTime);
                 entity.Get<CoinSpawnCooldownComponent>().Value = _configuration.CoinSpawnCooldown;
             }
         }

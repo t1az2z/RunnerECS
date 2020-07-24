@@ -1,5 +1,4 @@
 ﻿using Leopotam.Ecs;
-using System;
 using UnityEngine;
 
 namespace RunnerTT

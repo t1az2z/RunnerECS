@@ -1,9 +1,8 @@
-﻿using RunnerTT;
-using System.Collections;
+﻿using DG.Tweening;
+using RunnerTT;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class InGameScreen : UIScreen
 {
@@ -13,17 +12,22 @@ public class InGameScreen : UIScreen
 
     private void Start()
     {
-        base.OpenScreen();
         GameState.OnCoinsChange += OnCoinsChange;
         GameState.OnDistanceChange += OnDistanceChange;
     }
     private void OnCoinsChange(int coins)
     {
         coinsCounter.text = $"Coins: {coins}";
-        coinImage.rectTransform.DOPunchAnchorPos(Vector2.up, .5f);
+        coinImage.rectTransform.DOPunchScale(Vector3.one*.4f, .1f, 2);
+        coinImage.rectTransform.localScale = Vector3.ClampMagnitude(coinImage.rectTransform.localScale, 1.5f);
     }
     private void OnDistanceChange(float distance)
     {
         distanceCounter.text = $"Distance: {distance : 0.0}";
+    }
+    private void OnDestroy()
+    {
+        GameState.OnCoinsChange -= OnCoinsChange;
+        GameState.OnDistanceChange -= OnDistanceChange;
     }
 }

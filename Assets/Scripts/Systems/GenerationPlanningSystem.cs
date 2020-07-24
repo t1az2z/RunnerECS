@@ -10,11 +10,6 @@ namespace RunnerTT
         private EcsFilter<SpawnLaneIndexComponent, TimeSinceObsacleSpawnComponent, TimeTillNextSpawnComponent, CoinSpawnCooldownComponent> _filter = null;
         public void Run()
         {
-            if (_filter.IsEmpty())
-            {
-                return;
-            }
-
             foreach (var index in _filter)
             {
                 if (_gameState.State != State.Game)
@@ -24,8 +19,8 @@ namespace RunnerTT
                 timeSinceLastSpawnComponent.Value += Time.deltaTime;
 
                 ref var coinCooldown = ref _filter.Get4(index);
-                var generationSpeedCompensation = _gameState.CoinsCount * _configuration.MaxSpeedUpCoins;
-                coinCooldown.Value -= Time.deltaTime+generationSpeedCompensation*.01f;
+                var coinsSpeedCoef = Mathf.Clamp01(_gameState.CoinsCount * _configuration.SpeedUpPerCoin / _configuration.MaxSpeedUp);
+                coinCooldown.Value = (coinCooldown.Value - (coinCooldown.Value * coinsSpeedCoef)) - Time.deltaTime;
 
                 var timeTillNextSpawn = _filter.Get3(index).Value;
 
@@ -33,7 +28,10 @@ namespace RunnerTT
 
                 if (timeSinceLastSpawnComponent.Value >= timeTillNextSpawn)
                 {
-                    var obstacleCanBeSpawned = ObstacleCanBeSpawned(_filter, _configuration.RandomTimeForSpawn);
+                    float minSpawnTime = _configuration.ObstacleMinSpawnTime - (_configuration.ObstacleMinSpawnTime * coinsSpeedCoef);
+                    float maxSpawnTime = _configuration.ObstacleMaxSpawnTime - (_configuration.ObstacleMaxSpawnTime * coinsSpeedCoef);
+                    var randomTime = Random.Range(minSpawnTime, maxSpawnTime);
+                    var obstacleCanBeSpawned = ObstacleCanBeSpawned(_filter, randomTime - (randomTime * coinsSpeedCoef));
                     if (obstacleCanBeSpawned)
                     {
                         entity.Get<SpawnObstacleEvent>();

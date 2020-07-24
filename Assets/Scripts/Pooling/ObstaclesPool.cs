@@ -1,13 +1,16 @@
 ﻿using Leopotam.Ecs;
 using RunnerTT;
 
-public class ObstaclesPool : GenericObjectPool<ObstacleView>
+namespace RunnerTT
 {
-    public override void ReturnToPool(ObstacleView objectToReturn)
+    public class ObstaclesPool : GenericObjectPool<ObstacleView>
     {
-        var entity = objectToReturn.Entity;
-        entity.Del<WorldObjectComponent>();
-        entity.Del<MoveComponent>();
-        base.ReturnToPool(objectToReturn);
+        public override void ReturnToPool(ObstacleView objectToReturn)
+        {
+            var entity = objectToReturn.Entity;
+            entity.Del<WorldObjectComponent>();
+            entity.Del<MoveComponent>();
+            base.ReturnToPool(objectToReturn);
+        }
     }
 }

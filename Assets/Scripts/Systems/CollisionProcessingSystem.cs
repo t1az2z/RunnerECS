@@ -1,13 +1,12 @@
 ﻿using Leopotam.Ecs;
-using UnityEngine;
-
 namespace RunnerTT
 {
     public class CollisionProcessingSystem : IEcsRunSystem
     {
         private GameState _gameState;
         private SceneData _sceneData;
-        private EcsFilter<CollisionEventComponent, CoinViewRefComponent> _filter;
+        private EcsFilter<CollisionEvent> _filter;
+        private EcsFilter<PlayerViewRefComponent> _player;
         public void Run()
         {
             foreach(var index in _filter)
@@ -26,10 +25,11 @@ namespace RunnerTT
                         break;
 
                     case CollisionType.Obstacle:
-                        _gameState.State = State.End;
+                        _player.GetEntity(0).Get<PlayerDeathEvent>();
                         break;
                 }
             }
+
         }
     }
 }

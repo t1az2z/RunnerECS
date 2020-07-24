@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Schema;
 using UnityEngine;
 
 namespace RunnerTT
@@ -37,7 +36,6 @@ namespace RunnerTT
             {
                 _currentDistance = value;
                 OnDistanceChange?.Invoke(_currentDistance);
-                Debug.Log(_currentDistance);
             }
         }
 
@@ -68,6 +66,7 @@ namespace RunnerTT
     {
         Start,
         End,
+        Death,
         Game
     }
 }

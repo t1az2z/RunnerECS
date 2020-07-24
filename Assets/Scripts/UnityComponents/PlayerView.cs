@@ -1,7 +1,19 @@
 ﻿using Leopotam.Ecs;
+using System.Collections;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+namespace RunnerTT
 {
-    public EcsEntity Entity;
+    public class PlayerView : MonoBehaviour
+    {
+        public EcsEntity Entity;
+        public Animator Animator;
+
+        public IEnumerator EndGameAfterDeathAnimation(float animationTime, GameState gameState)
+        {
+            Animator.SetTrigger("Death");
+            yield return new WaitForSeconds(animationTime);
+            gameState.State = State.End;
+        }
+    }
 }

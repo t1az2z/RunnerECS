@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RunnerTT
 {
@@ -17,10 +14,11 @@ namespace RunnerTT
         public float SpawnDistance;
         [Range(.4f, 3)] public float ObstacleMinSpawnTime;
         [Range(3, 6)] public float ObstacleMaxSpawnTime;
-        public float RandomTimeForSpawn => UnityEngine.Random.Range(ObstacleMinSpawnTime, ObstacleMaxSpawnTime);
         [Range(0, 100)] public int CoinGenerationChance;
         public float CoinSpawnCooldown;
-        public float MaxSpeedUpCoins;
+        public float SpeedUpPerCoin;
+        public float MaxSpeedUp;
         public float PoolingBorderZCoordinate;
+        public float DeathAnimationTime;
     }
 }

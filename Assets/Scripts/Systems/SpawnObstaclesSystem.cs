@@ -1,5 +1,4 @@
 ﻿using Leopotam.Ecs;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 namespace RunnerTT
@@ -39,7 +38,7 @@ namespace RunnerTT
         private void ResetSpawnEntity(in EcsEntity entity)
         {
             entity.Get<TimeSinceObsacleSpawnComponent>().Value = 0;
-            entity.Get<TimeTillNextSpawnComponent>().Value = _configuration.RandomTimeForSpawn;
+            entity.Get<TimeTillNextSpawnComponent>().Value = Random.Range(_configuration.ObstacleMinSpawnTime, _configuration.ObstacleMaxSpawnTime);
         }
     }
 }

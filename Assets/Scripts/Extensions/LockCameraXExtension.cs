@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace RunnerTT
 {
-
     [ExecuteInEditMode]
     [SaveDuringPlay]
     [AddComponentMenu("")]

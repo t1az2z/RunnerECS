@@ -1,5 +1,6 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
+
 namespace RunnerTT
 {
     public class PlayerInitializationSystem : IEcsInitSystem
@@ -15,7 +16,7 @@ namespace RunnerTT
             moveComponent.Speed = _configuration.MovementSpeed;
             playerEntity.Get<CurrentLaneComponent>().Value = _configuration.StartLaneIndex;
             playerEntity.Get<WorldObjectComponent>().Transform = _sceneData.PlayerView.transform;
-            playerEntity.Get<CoinsCollectedComponent>().Value = 0;
+            playerEntity.Get<PlayerViewRefComponent>().Value = _sceneData.PlayerView;
             _sceneData.PlayerView.Entity = playerEntity;
         }
     }

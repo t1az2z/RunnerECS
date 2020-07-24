@@ -17,7 +17,8 @@ namespace RunnerTT
             {
                 var transform = _filter.Get1(index).Transform;
                 var direction = _filter.Get2(index).Direction;
-                var speed = _filter.Get2(index).Speed;// + _configuration.MaxSpeedUpCoins*_gameState.CoinsCount;
+                var speed = _filter.Get2(index).Speed;
+                speed +=_configuration.SpeedUpPerCoin * _gameState.CoinsCount;
                 transform.Translate(direction * speed * Time.deltaTime);
             }
         }

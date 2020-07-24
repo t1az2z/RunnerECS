@@ -14,7 +14,7 @@ namespace RunnerTT
                 Debug.LogError("Entity is null on coin");
                 return;
             }
-            Entity.Get<CollisionEventComponent>().Type = CollisionType.Coin;
+            Entity.Get<CollisionEvent>().Type = CollisionType.Coin;
         }
     }
 }

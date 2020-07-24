@@ -1,6 +1,6 @@
 ﻿namespace RunnerTT
 {
-    public struct CollisionEventComponent
+    public struct CollisionEvent
     {
         public CollisionType Type;
     }

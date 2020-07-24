@@ -23,9 +23,11 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
   SpawnDistance: 120
-  ObstacleMinSpawnTime: 1.457
-  ObstacleMaxSpawnTime: 3.69
-  CoinGenerationChance: 1
-  CoinSpawnCooldown: 0.2
-  MaxSpeedUpCoins: 30
+  ObstacleMinSpawnTime: 0.8
+  ObstacleMaxSpawnTime: 3
+  CoinGenerationChance: 7
+  CoinSpawnCooldown: 0.5
+  SpeedUpPerCoin: 0.2
+  MaxSpeedUp: 100
   PoolingBorderZCoordinate: -8
+  DeathAnimationTime: 1
