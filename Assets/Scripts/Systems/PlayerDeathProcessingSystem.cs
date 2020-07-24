@@ -20,6 +20,7 @@ namespace RunnerTT
             if(_gameState.State == State.End)
             {
                 PlayerPrefs.SetInt("CoinsCount", _gameState.CoinsCount);
+                PlayerPrefs.Save();
             }
         }
 
