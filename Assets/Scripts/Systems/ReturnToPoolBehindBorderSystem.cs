@@ -5,10 +5,9 @@ namespace RunnerTT
     public class ReturnToPoolBehindBorderSystem : IEcsRunSystem
     {
         private SceneData _sceneData = null;
-        private GameState _gameState;
         private Configuration _configuration = null;
-        private EcsFilter<WorldObjectComponent, MoveComponent, ObstacleViewRefComponent> _obstacles;
-        private EcsFilter<WorldObjectComponent, MoveComponent, CoinViewRefComponent> _coins;
+        private EcsFilter<WorldObjectComponent, MoveComponent, ObstacleViewRefComponent> _obstacles = null;
+        private EcsFilter<WorldObjectComponent, MoveComponent, CoinViewRefComponent> _coins = null;
 
         public void Run()
         {

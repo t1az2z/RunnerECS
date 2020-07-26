@@ -5,8 +5,8 @@ namespace RunnerTT
 {
     public class PlayerMovementSystem : IEcsRunSystem
     {
-        private Configuration _configuration;
-        private EcsFilter<CurrentLaneComponent, WorldObjectComponent> _filter;
+        private Configuration _configuration = null;
+        private EcsFilter<CurrentLaneComponent, WorldObjectComponent> _filter = null;
         public void Run()
         {
             if (_filter.IsEmpty())

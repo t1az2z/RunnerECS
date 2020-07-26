@@ -50,9 +50,9 @@ namespace RunnerTT
         {
             int trueCounter = 0;
             bool canBeSpawned = false;
-            foreach (var i in filter)
+            foreach (var index in filter)
             {
-                var timeSinceLastSpawn = filter.Get2(i).Value;
+                var timeSinceLastSpawn = filter.Get2(index).Value;
 
                 if (timeSinceLastSpawn > randomSpawnTime)
                     trueCounter++;

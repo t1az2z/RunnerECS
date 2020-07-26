@@ -5,8 +5,8 @@ namespace RunnerTT
 {
     public class SpawnPointsInitializationSystem : IEcsInitSystem
     {
-        private Configuration _configuration;
-        private EcsWorld _world;
+        private Configuration _configuration = null;
+        private EcsWorld _world = null;
 
         public void Init()
         {

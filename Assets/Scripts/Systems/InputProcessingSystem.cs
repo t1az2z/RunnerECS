@@ -6,11 +6,10 @@ namespace RunnerTT
 {
     public class InputProcessingSystem : IEcsRunSystem
     {
-        private GameState _gameState;
-        private Configuration _configuration;
-        private EcsFilter<InputEvet> _filter;
-        private SceneData _sceneData;
-        private EcsFilter<CurrentLaneComponent, MoveComponent> _player;
+        private GameState _gameState = null;
+        private Configuration _configuration = null;
+        private EcsFilter<InputEvet> _filter = null;
+        private EcsFilter<CurrentLaneComponent, MoveComponent> _player = null;
         public void Run()
         {
             foreach(var index in _filter)
@@ -23,14 +22,16 @@ namespace RunnerTT
                     case ButtonPress.Left:
                         if (_player.IsEmpty())
                             return;
-                        _player.Get1(0).Value = Mathf.Clamp(currentLane - 1, 0, maxLaneIndex);
-                        break;
+
+                        _player.Get1(index).Value = Mathf.Clamp(currentLane - 1, 0, maxLaneIndex);
+                        return;
 
                     case ButtonPress.Right:
                         if (_player.IsEmpty())
                             return;
-                        _player.Get1(0).Value = Mathf.Clamp(currentLane+1, 0, maxLaneIndex);
-                        break;
+
+                        _player.Get1(index).Value = Mathf.Clamp(currentLane+1, 0, maxLaneIndex);
+                        return;
 
                     case ButtonPress.Space:
                         if (_gameState.State == State.Game)

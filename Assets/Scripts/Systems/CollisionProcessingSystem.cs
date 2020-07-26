@@ -3,10 +3,10 @@ namespace RunnerTT
 {
     public class CollisionProcessingSystem : IEcsRunSystem
     {
-        private GameState _gameState;
-        private SceneData _sceneData;
-        private EcsFilter<CollisionEvent> _filter;
-        private EcsFilter<PlayerViewRefComponent> _player;
+        private GameState _gameState = null;
+        private SceneData _sceneData = null;
+        private EcsFilter<CollisionEvent> _filter = null;
+        private EcsFilter<PlayerViewRefComponent> _player = null;
         public void Run()
         {
             foreach(var index in _filter)
@@ -25,7 +25,7 @@ namespace RunnerTT
                         break;
 
                     case CollisionType.Obstacle:
-                        _player.GetEntity(0).Get<PlayerDeathEvent>();
+                        _player.GetEntity(index).Get<PlayerDeathEvent>();
                         break;
                 }
             }

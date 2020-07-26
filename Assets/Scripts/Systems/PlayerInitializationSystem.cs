@@ -7,7 +7,7 @@ namespace RunnerTT
     {
         private Configuration _configuration = null;
         private SceneData _sceneData = null;
-        private EcsWorld _world;
+        private EcsWorld _world = null;
         public void Init()
         {
             var playerEntity = _world.NewEntity();

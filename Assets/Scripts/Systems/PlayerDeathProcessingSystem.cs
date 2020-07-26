@@ -14,9 +14,14 @@ namespace RunnerTT
             if (!_player.IsEmpty())
             {
                 _gameState.State = State.Death;
-                ref var player = ref _player.Get1(0);
-                player.Value.StartCoroutine(player.Value.EndGameAfterDeathAnimation(_configuration.DeathAnimationTime, _gameState));
+
+                foreach (int index in _player)
+                {
+                    ref var player = ref _player.Get1(index);
+                    player.Value.StartCoroutine(player.Value.EndGameAfterDeathAnimation(_configuration.DeathAnimationTime, _gameState));
+                }
             }
+
             if(_gameState.State == State.End)
             {
                 PlayerPrefs.SetInt("CoinsCount", _gameState.CoinsCount);

@@ -5,9 +5,9 @@ namespace RunnerTT
 {
     public class InputSystem : IEcsRunSystem
     {
-        private GameState _gameState;
+        private GameState _gameState = null;
         private EcsWorld _world = null;
-        private EcsFilter<InputEvet> _filter;
+        private EcsFilter<InputEvet> _filter = null;
         public void Run()
         {
             if (_gameState.State == State.Game)

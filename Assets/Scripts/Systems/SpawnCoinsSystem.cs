@@ -5,11 +5,11 @@ namespace RunnerTT
 {
     public  class SpawnCoinsSystem : IEcsRunSystem
     {
-        private EcsWorld _world;
-        private Configuration _configuration;
-        private GameState _gameState;
-        private SceneData _sceneData;
-        private EcsFilter<SpawnCoinEvent, SpawnLaneIndexComponent> _filter;
+        private EcsWorld _world = null;
+        private Configuration _configuration = null;
+        private GameState _gameState = null;
+        private SceneData _sceneData = null;
+        private EcsFilter<SpawnCoinEvent, SpawnLaneIndexComponent> _filter = null;
         public void Run()
         {
             if (_gameState.State != State.Game || _filter.IsEmpty())
