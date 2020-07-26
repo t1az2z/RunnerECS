@@ -2,7 +2,7 @@
 
 namespace RunnerTT
 {
-    public struct WorldObjectComponent
+    public struct WorldObject
     {
         public Transform Transform;
     }

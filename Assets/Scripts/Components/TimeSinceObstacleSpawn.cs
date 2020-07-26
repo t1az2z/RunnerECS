@@ -1,6 +1,6 @@
 ﻿namespace RunnerTT
 {
-    public struct TimeSinceObsacleSpawnComponent
+    public struct TimeSinceObsacleSpawn
     {
         public float Value;
     }

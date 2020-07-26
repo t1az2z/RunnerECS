@@ -2,7 +2,7 @@
 
 namespace RunnerTT
 {
-    public struct PlayerViewRefComponent
+    public struct PlayerViewRef
     {
         public PlayerView Value;
     }

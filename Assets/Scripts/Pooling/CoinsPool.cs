@@ -7,9 +7,9 @@ namespace RunnerTT
         public override void ReturnToPool(CoinView objectToReturn)
         {
             var entity = objectToReturn.Entity;
-            entity.Del<WorldObjectComponent>();
-            entity.Del<CoinViewRefComponent>();
-            entity.Del<MoveComponent>();
+            entity.Del<WorldObject>();
+            entity.Del<CoinViewRef>();
+            entity.Del<Move>();
             base.ReturnToPool(objectToReturn);
         }
     }

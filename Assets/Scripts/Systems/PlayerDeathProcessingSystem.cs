@@ -7,7 +7,7 @@ namespace RunnerTT
     {
         private Configuration _configuration = null;
         private GameState _gameState = null;
-        private EcsFilter<PlayerViewRefComponent, PlayerDeathEvent> _player = null;
+        private EcsFilter<PlayerViewRef, PlayerDeathEvent> _player = null;
 
         public void Run()
         {

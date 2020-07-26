@@ -8,8 +8,8 @@ namespace RunnerTT
         public override void ReturnToPool(ObstacleView objectToReturn)
         {
             var entity = objectToReturn.Entity;
-            entity.Del<WorldObjectComponent>();
-            entity.Del<MoveComponent>();
+            entity.Del<WorldObject>();
+            entity.Del<Move>();
             base.ReturnToPool(objectToReturn);
         }
     }

@@ -26,8 +26,8 @@ namespace RunnerTT {
 
                 .Add(new SpawnPointsInitializationSystem())
                 .Add(new GenerationPlanningSystem())
-                .Add(new SpawnObstaclesSystem())
-                .Add(new SpawnCoinsSystem())
+                .Add(new ObstaclesSpawnSystem())
+                .Add(new CoinsSpawnSystem())
                 .Add(new ReturnToPoolBehindBorderSystem())
 
                 .Add(new CollisionProcessingSystem())

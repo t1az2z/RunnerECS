@@ -6,11 +6,10 @@ namespace RunnerTT
     public class PlayerMovementSystem : IEcsRunSystem
     {
         private Configuration _configuration = null;
-        private EcsFilter<CurrentLaneComponent, WorldObjectComponent> _filter = null;
+        private EcsFilter<CurrentLane, WorldObject> _filter = null;
         public void Run()
         {
-            if (_filter.IsEmpty())
-                return;
+            var deltaTime = Time.deltaTime;
 
             foreach(var index in _filter)
             {
@@ -20,7 +19,7 @@ namespace RunnerTT
                 var moveSpeed = _configuration.MovementSpeed;
                 if (transform.position != lanePosition)
                 {
-                    transform.position = Vector3.Lerp(transform.position, lanePosition, moveSpeed * Time.deltaTime);
+                    transform.position = Vector3.Lerp(transform.position, lanePosition, moveSpeed * deltaTime);
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace RunnerTT
 {
-    public struct CurrentLaneComponent
+    public struct CurrentLane
     {
         public int Value;
     }

@@ -1,6 +1,6 @@
 ﻿namespace RunnerTT
 {
-    internal struct CoinSpawnCooldownComponent
+    internal struct CoinSpawnCooldown
     {
         public float Value;
     }

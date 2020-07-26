@@ -14,10 +14,10 @@ namespace RunnerTT
             {
                 var currentLaneIndex = i;
                 var entity = _world.NewEntity();
-                entity.Get<SpawnLaneIndexComponent>().Value = currentLaneIndex;
-                entity.Get<TimeSinceObsacleSpawnComponent>().Value = 0;
-                entity.Get<TimeTillNextSpawnComponent>().Value = Random.Range(_configuration.ObstacleMinSpawnTime, _configuration.ObstacleMaxSpawnTime);
-                entity.Get<CoinSpawnCooldownComponent>().Value = _configuration.CoinSpawnCooldown;
+                entity.Get<SpawnLaneIndex>().Value = currentLaneIndex;
+                entity.Get<TimeSinceObsacleSpawn>().Value = 0;
+                entity.Get<TimeTillNextSpawn>().Value = Random.Range(_configuration.ObstacleMinSpawnTime, _configuration.ObstacleMaxSpawnTime);
+                entity.Get<CoinSpawnCooldown>().Value = _configuration.CoinSpawnCooldown;
             }
         }
     }

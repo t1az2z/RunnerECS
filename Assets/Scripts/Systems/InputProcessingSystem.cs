@@ -9,7 +9,8 @@ namespace RunnerTT
         private GameState _gameState = null;
         private Configuration _configuration = null;
         private EcsFilter<InputEvet> _filter = null;
-        private EcsFilter<CurrentLaneComponent, MoveComponent> _player = null;
+        private EcsFilter<CurrentLane, Move> _player = null;
+
         public void Run()
         {
             foreach(var index in _filter)

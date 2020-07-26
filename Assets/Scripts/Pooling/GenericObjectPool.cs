@@ -25,7 +25,6 @@ namespace RunnerTT
             if (objects.Count == 0)
                 AddObjects(1, prefab);
             T objectFromPool = objects.Dequeue();
-            objectFromPool.gameObject.SetActive(true);
             return objectFromPool;
         }
 

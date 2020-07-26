@@ -1,6 +1,6 @@
 ﻿namespace RunnerTT
 {
-    public struct ObstacleViewRefComponent
+    public struct ObstacleViewRef
     {
         public ObstacleView Value;
     }

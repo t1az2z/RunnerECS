@@ -2,7 +2,7 @@
 
 namespace RunnerTT
 {
-    public struct MoveComponent
+    public struct Move
     {
         public Vector3 Direction;
         public float Speed;

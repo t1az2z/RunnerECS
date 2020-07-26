@@ -6,8 +6,8 @@ namespace RunnerTT
     {
         private SceneData _sceneData = null;
         private Configuration _configuration = null;
-        private EcsFilter<WorldObjectComponent, MoveComponent, ObstacleViewRefComponent> _obstacles = null;
-        private EcsFilter<WorldObjectComponent, MoveComponent, CoinViewRefComponent> _coins = null;
+        private EcsFilter<WorldObject, Move, ObstacleViewRef> _obstacles = null;
+        private EcsFilter<WorldObject, Move, CoinViewRef> _coins = null;
 
         public void Run()
         {
@@ -32,7 +32,7 @@ namespace RunnerTT
             }
         }
 
-        private bool NeedToBePooled(WorldObjectComponent worldObjectComponent)
+        private bool NeedToBePooled(WorldObject worldObjectComponent)
         {
             var position = worldObjectComponent.Transform.position;
             if (position.z <= _configuration.PoolingBorderZCoordinate)

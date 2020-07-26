@@ -1,6 +1,6 @@
 ﻿namespace RunnerTT
 {
-    public struct CoinViewRefComponent
+    public struct CoinViewRef
     {
         public CoinView Value;
     }
